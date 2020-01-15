@@ -30,10 +30,19 @@ player.setheading(90)
 
 playerSpeed = 15
 
-# Move the player left and right
+# Create the enemy
+enemy = turtle.Turtle()
+enemy.color("red")
+enemy.shape("circle")
+enemy.penup()
+enemy.speed(0)
+enemy.setposition(-200, 250)
+
+enemySpeed = 2
 
 
 def move_left():
+    # Move the player left and right
     x = player.xcor()
     x -= playerSpeed
     if x < -280:
@@ -57,5 +66,26 @@ def move_right():
 wn.listen()
 wn.onkey(move_left, "Left")
 wn.onkey(move_right, "Right")
+
+# Main game loop
+while True:
+
+    # Move the enemy
+    x = enemy.xcor()
+    x += enemySpeed
+    enemy.setx(x)
+
+    # get the enemy back and down
+    if enemy.xcor() > 280:
+        y = enemy.ycor()
+        y -= 40
+        enemySpeed *= -1
+        enemy.sety(y)
+
+    if enemy.xcor() < -280:
+        y = enemy.ycor()
+        y -= 40
+        enemySpeed *= -1
+        enemy.sety(y)
 
 delay = input("Press enter to finish")
