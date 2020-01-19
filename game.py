@@ -2,12 +2,18 @@ import turtle
 import math
 import os
 import random
+import winsound
 
 # Set up the screen
 wn = turtle.Screen()
 wn.bgcolor("black")
 wn.setup(width=650, height=650)
 wn.title("Space Invaders")
+wn.bgpic("assets\\sprites\\space_invaders_background.gif")
+
+# Register the shapes
+wn.register_shape("assets\\sprites\\invader.gif")
+wn.register_shape("assets\\sprites\\player.gif")
 
 # Draw border
 border_pen = turtle.Turtle()
@@ -37,7 +43,7 @@ score_pen.hideturtle()
 # Create the player turtle
 player = turtle.Turtle()
 player.color("blue")
-player.shape("triangle")
+player.shape("assets\\sprites\\player.gif")
 player.penup()
 player.speed(0)
 player.setposition(0, -250)
@@ -56,7 +62,7 @@ for i in range(numer_of_enemies):
 
 for enemy in enemies:
     enemy.color("red")
-    enemy.shape("circle")
+    enemy.shape("assets\\sprites\\invader.gif")
     enemy.penup()
     enemy.speed(0)
     x = random.randint(-200, 200)
@@ -109,6 +115,8 @@ def fire_bullet():
     # Declare bulletState as a global if it needs changed
     global bulletState
     if bulletState == "ready":
+        # for windows only
+        winsound.PlaySound("assets\\sounds\\laser.wav", winsound.SND_ASYNC)
         bulletState = "fire"
         # Move the bullet to the just above the player
         x = player.xcor()
@@ -163,6 +171,9 @@ while True:
 
         # Check for a collison between the bullet and the enemy
         if isCollision(bullet, enemy) == True:
+            # for windows only
+            winsound.PlaySound(
+                "assets\\sounds\\explosion.wav", winsound.SND_ASYNC)
             # Reset the bullet
             bullet.hideturtle()
             bulletState = "ready"
