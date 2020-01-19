@@ -7,7 +7,7 @@ import winsound
 # Set up the screen
 wn = turtle.Screen()
 wn.bgcolor("black")
-wn.setup(width=650, height=650)
+wn.setup(width=650, height=700)
 wn.title("Space Invaders")
 wn.bgpic("assets\\sprites\\space_invaders_background.gif")
 
