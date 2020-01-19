@@ -132,16 +132,21 @@ while True:
 
         # get the enemy back and down
         if enemy.xcor() > 280:
-            y = enemy.ycor()
-            y -= 40
+            # Move all enemies down
+            for e in enemies:
+                y = enemy.ycor()
+                y -= 40
+                e.sety(y)
+            # Change enemy direction
             enemySpeed *= -1
-            enemy.sety(y)
 
         if enemy.xcor() < -280:
-            y = enemy.ycor()
-            y -= 40
+            # Move all enemies down
+            for e in enemies:
+                y = enemy.ycor()
+                y -= 40
+                e.sety(y)
             enemySpeed *= -1
-            enemy.sety(y)
 
         # Check for a collison between the bullet and the enemy
         if isCollision(bullet, enemy) == True:
