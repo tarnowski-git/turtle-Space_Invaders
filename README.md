@@ -4,7 +4,7 @@ A simple Orinted Objected Programming Space Invaders-style game using Python, th
 
 ## Demo
 
-<!-- ![game](https://user-images.githubusercontent.com/34337622/72091944-9f66da80-3311-11ea-81d6-977131cc7991.gif) -->
+![ScreenCapture_21 01 2020_03 10 44](https://user-images.githubusercontent.com/34337622/72769862-7d683480-3bfc-11ea-894f-03552e2fe301.gif)
 
 ## Technologies
 
